@@ -1,0 +1,192 @@
+
+/* Resetando padrões */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --main-text-color: black;
+    --main-background:  rgba(0, 0, 0, 0.7);
+    --second-background:  rgba(255, 255, 255, 0.1);
+    --modal-background:  rgba(0, 0, 0, 0.2);
+    --second-text-color: lightgray;
+    /* --third-text-color: darkgoldenrod; */
+    /* --third-text-color: burlywood; */
+    --third-text-color: lightslategray;
+}
+
+/* Container do Contador */
+body{
+    min-height: 100vh;
+    min-width: none;
+    background-image: url("./img/pexels-eberhard-grossgasteiger-1004665.jpg");
+    background-size: cover;
+    background-position: center center;
+    font-family: 'Caveat', cursive;
+    color: var(--main-text-color);
+}
+.contador {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+#data {
+    font-size: 3em;
+    margin-top: 150px;
+    font-weight: normal;
+    padding: 0px 20px;
+    border-top: 2px solid var(--third-text-color);
+}
+#data-texto {
+    font-weight: normal;
+    font-size: 3em;
+    padding: 0px 20px;
+}
+#contagem {
+    border-top: 2px solid var(--third-text-color);
+    display: flex;
+    flex-wrap: wrap;
+}
+.numeros{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-size: 4em;
+}
+.escrito {
+    margin: 0 20px;
+    font-size: 2em;
+    border-bottom: 2px solid var(--third-text-color);
+}
+
+#footer {
+    margin-top: 150px;
+    font-family: sans-serif;
+    font-size: 12px;
+    background: var(--second-background);
+    backdrop-filter: blur(5px);
+}
+
+/* Modal de dados */
+.modalContainer {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    background: var(--modal-background);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    cursor: pointer;
+}
+
+.modal {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    flex-wrap: nowrap;
+    height: 60%;
+    min-height: 300px;
+    width: 50%;
+    min-width: 300px;
+    background: var(--main-background);
+    backdrop-filter: blur(5px);
+    padding: 20px;
+    border: 3px solid  var(--third-text-color);
+    box-shadow: 1.5em 1em 0.6em rgba(20, 20, 20, 0.8);
+    border-radius: 3%;
+    position: relative;
+    color: var(--second-text-color);
+    cursor: default;
+}
+
+.modal h1 {
+    font-size: 3em;
+    margin: 10px;
+    color: var(--second-text-color);
+}
+.modal h3 {
+    font-size: 1.3em;
+    margin: 10px;
+    color: var(--third-text-color);
+}
+.input {
+    border: 0;
+    border-bottom: 0.5px solid var(--second-text-color);
+    outline: 0;
+    margin:  5%;
+    padding: 2px;
+    font-size: 1.2rem;
+    background: transparent;
+    font: inherit;
+    color: var(--third-text-color)
+}
+#descricao {
+    width: 300px;
+    font-size: 1.6em;
+}
+#dataUsuario {
+    font-size: 1.3em;
+    cursor: pointer;
+}
+#dataUsuario::-webkit-calendar-picker-indicator {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0 0 24 24"><path fill="%23bbbbbb" d="M20 3h-1V1h-2v2H7V1H5v2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 18H4V8h16v13z"/></svg>');
+    cursor: pointer;
+  }
+
+/* Botões */
+
+.botaoFechar {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    height: 25px;
+    width: 25px;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    font-size: 1.5em;
+    color:  var(--second-text-color);
+}
+
+.botoes {
+    font: inherit;
+    cursor: pointer;
+    margin: 3%;
+    border: 0;
+    outline: 0;
+    padding: 0.8rem;
+    min-width: 120px;
+    border-radius: 0.2rem;
+    background: var(--second-text-color);
+    color: var(--main-text-color);
+    box-shadow: 0px 1px 2px 1px rgba(20, 20, 20, 0.6);
+    font-size: 1.1em;
+    font-weight: 700;
+    margin: 20px;
+}
+.botoes:hover {
+    background: var(--third-text-color);
+    color: var(--main-text-color);
+}
+.botoes:active {
+    box-shadow: inset 1px 1px 4px 0px rgba(0, 0, 0, 0.8);
+}
+#anoNovo {
+    display: none;
+}
+/* Responsividade */
+
+@media(max-width: 500px) {
+    #container {
+        flex-direction: row;
+    }
+}

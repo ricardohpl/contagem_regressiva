@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-Br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contagem Regressiva</title>
+    <!-- Fonte -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Css do projeto -->
+    <link rel="stylesheet" href="./styles.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <main class="contador">
+        <h2 id="data">Contagem regressiva para:</h2>
+        <h2 id="data-texto">Qual data?</h2>
+        <div id="contagem">
+            <div class="miniContainer">
+                <div class="numeros" id="dias">00</div>
+                <div class="escrito">Dias</div>
+            </div>
+            <div class="miniContainer">
+                <div class="numeros" id="horas">00</div>
+                <div class="escrito">Horas</div>
+            </div>
+            <div class="miniContainer">
+                <div class="numeros" id="minutos">00</div>
+                <div class="escrito">Minutos</div>
+            </div>
+            <div class="miniContainer">
+                <div class="numeros" id="segundos">00</div>
+                <div class="escrito">Segundos</div>
+            </div>
+        </div>
+        <section>
+            <button id="novaContagem" class="botoes">Nova Contagem</button>
+            <button id="anoNovo" class="botoes">Ano Novo</button>
+        </section>
+        <div id="footer">Photo background by eberhard grossgasteiger from Pexels</div>
+    </main>
+    <div id="modalDados" class="modalContainer">
+        <div class="modal">
+            <button class="botaoFechar">x</button>
+            <h1>Contagem Regressiva</h1>
+            <h3>Informações sobre a data para contagem regressiva: </h3>
+            <form id="formData" action="" autocomplete="off">
+                <input descricaoData class="input" id="descricao" type="text" placeholder="Descrição da data, ex.: Ano novo!" required><br>
+                <input dataAlvo class="input" id="dataUsuario" type="date" value="2023-01-01" required>
+                <button realizarContagem id="realizarContagem" class="botoes">Realizar Contagem</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
