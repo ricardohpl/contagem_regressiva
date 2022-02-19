@@ -6,27 +6,25 @@ const contador = document.querySelector('.contador') // buscando elemento main
 const descricaoData = document.querySelector('[descricaoData]') // buscando elemento descrição da data
 const dataUsuario = document.querySelector('[dataAlvo]') // buscando elemento data Alvo
 const realizarContagem = document.querySelector('[realizarContagem]') // buscando botão para realizar contagem
-const anoNovo = document.getElementById('anoNovo')
-
-let dataAlvo = new Date(dataUsuario.value) // definindo data padrão do ano novo pelo value do campo
+const anoNovo = document.getElementById('anoNovo') // botão para resetar a contagem para o ano novo
+const msg = document.getElementById('msg') // elemento para exibir mensagens na modal
+const alerta = document.querySelector('.alerta') // classe para alertas para usuário
 
 function fecharModal() {
     modal.style.display = 'none'
     contador.style.display = 'flex'
+    alerta.style.display = 'none'
 }
-
 
 function contagemRegressiva(descricao = 'Ano Novo', botaoResetar = false) {
 
     console.log('iniciar contagem')
     atualizarTexto(descricao)
-    dataAlvo = new Date(dataUsuario.value)
+    dataAlvo = new Date(`${dataUsuario.value}T00:00:00`)
     contarDatas()
     setInterval(contarDatas, 1000)
     fecharModal()
-    console.log(botaoResetar)
     if (botaoResetar) {
-        console.log('sim')
         anoNovo.style.display = 'inline-block'
     }
 
@@ -74,28 +72,23 @@ function recarregar() {
 function abrirModal() {
     modal.style.display = 'flex'
     contador.style.display = 'none'
+    descricaoData.value = ''
+    definirDatas()
 }
 
-function dataMinima() { // FAZER FUNCIONAR !!!!!!!
+function definirDatas() { 
     let dataMinima = new Date()
-    dataUsuario.min = dataMinima.getFullYear() + "-" + ((dataMinima.getMonth() + 1)) + "-" + dataMinima.getDate()
-
-    // console.log(dataUsuario.min)
-    // console.log(dataUsuario)
+    dataUsuario.min = dataMinima.getFullYear() + "-" + (doisDigitos(dataMinima.getMonth() + 1)) + "-" + (doisDigitos(dataMinima.getDate() + 1))
+    dataUsuario.value = `${dataMinima.getFullYear() + 1}-01-01`
 }
 
-function buscarData () {
-    console.log(dataUsuario.value)
-    let dataDaContagem = new Date(dataUsuario.value)
-    if (dataUsuario.value) {
-        dataDaContagem = Date(dataUsuario.value)
-        console.log(dataDaContagem)
-        
-    }
-    return dataDaContagem
+
+function mensagemAlerta(textoMensagem) {
+    msg.innerHTML = textoMensagem
+    alerta.style.display = 'block'
 }
 
-// dataMinima() // setando data minima igual a data atual
+definirDatas() // setando data minima igual a data atual e ano novo a partir do ano corrente
 
 document.querySelector('.botaoFechar').onclick = fecharModal // fechar modal ao clicar no botão fechar
 document.querySelector('#novaContagem').onclick = abrirModal // recarregar pagina
@@ -103,13 +96,15 @@ anoNovo.onclick = recarregar
 
 realizarContagem.addEventListener('click', (e) => { // iniciar contagem ao clicar no botão
     e.preventDefault()
-
-    if (descricaoData.value) {
-        contagemRegressiva(descricaoData.value, true)
-    }
-    else {
-        alert('Descrição obrigatória')
-    }
+    
+    if (dataUsuario.value >= dataUsuario.min) {
+        if (descricaoData.value) {
+            contagemRegressiva(descricaoData.value, true)
+        }
+        else {
+            mensagemAlerta('Preencha a descrição!')
+        }
+    } else mensagemAlerta('Data tem que ser maior que hoje!')
 })
 
 modal.onclick = e => { // fechar modal ao clicar fora da modal
