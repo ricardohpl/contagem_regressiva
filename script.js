@@ -1,4 +1,5 @@
 
+
 const modal = document.getElementById('modalDados') // buscando elemento da modal
 const contador = document.querySelector('.contador') // buscando elemento main
 const descricaoData = document.querySelector('[descricaoData]') // buscando elemento descrição da data
