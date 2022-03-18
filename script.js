@@ -1,6 +1,4 @@
 
-
-
 const modal = document.getElementById('modalDados') // buscando elemento da modal
 const contador = document.querySelector('.contador') // buscando elemento main
 const descricaoData = document.querySelector('[descricaoData]') // buscando elemento descrição da data
@@ -36,11 +34,12 @@ function atualizarTexto(texto) {
 }
 
 function doisDigitos(numero) {
-    if (numero < 10) {
+    if (numero < 10 && numero > 0) {
         return '0' + `${numero}`
-    } else {
+    } else if (numero <= 0) {
+        return '00'
+    } else
         return numero
-    }
 }
 
 function contarDatas() {
@@ -49,9 +48,9 @@ function contarDatas() {
 
 
     const segundosTotal = (dataAlvo - dataCorrente) / 1000
-    const dias = Math.floor(segundosTotal / 3600 / 24)
-    const horas = Math.floor(segundosTotal / 3600) % 24
-    const minutos = Math.floor(segundosTotal / 60) % 60
+    let dias = Math.floor(segundosTotal / 3600 / 24)
+    let horas = Math.floor(segundosTotal / 3600) % 24
+    let minutos = Math.floor(segundosTotal / 60) % 60
     const segundos = Math.floor(segundosTotal) % 60
 
     const diaHTML = document.querySelector('#dias')
@@ -63,6 +62,12 @@ function contarDatas() {
     horasHTML.innerHTML = doisDigitos(horas)
     minutosHTML.innerHTML = doisDigitos(minutos)
     segundosHTML.innerHTML = doisDigitos(segundos)
+    
+
+    if ((dias + horas + minutos + segundos) === 0) {
+        alerta.classList.add('bom')
+        mensagemAlerta(descricaoData.value ? 'A data: "' + descricaoData.value + '" chegou!!!' : 'Feliz Ano Novoooo !!!')
+    }
 }
 
 function recarregar() {
@@ -76,7 +81,7 @@ function abrirModal() {
     definirDatas()
 }
 
-function definirDatas() { 
+function definirDatas() {
     let dataMinima = new Date()
     dataUsuario.min = dataMinima.getFullYear() + "-" + (doisDigitos(dataMinima.getMonth() + 1)) + "-" + (doisDigitos(dataMinima.getDate() + 1))
     dataUsuario.value = `${dataMinima.getFullYear() + 1}-01-01`
@@ -96,7 +101,7 @@ anoNovo.onclick = recarregar
 
 realizarContagem.addEventListener('click', (e) => { // iniciar contagem ao clicar no botão
     e.preventDefault()
-    
+
     if (dataUsuario.value >= dataUsuario.min) {
         if (descricaoData.value) {
             contagemRegressiva(descricaoData.value, true)

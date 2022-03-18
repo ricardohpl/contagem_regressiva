@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <meta name="description" content="Contagem regressiva para determinada data, por padrão o Ano Novo, porém usuário tem opção para selecionar a data que ele desejar"/>
+
     <title>Contagem Regressiva</title>
     <!-- Fonte -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -37,9 +39,14 @@
                 <div class="escrito">Segundos</div>
             </div>
         </div>
+        <div class="alerta">
+            <span id="msg"></span>
+            <span class="fecharAlerta" onclick="this.parentElement.style.display='none';">&times;</span>
+        </div>
         <section>
             <button id="novaContagem" class="botoes">Nova Contagem</button>
             <button id="anoNovo" class="botoes">Ano Novo</button>
+
         </section>
         <footer id="footer">Photo background by Laura James from Pexels</footer>
     </main>
@@ -49,7 +56,8 @@
             <h1>Contagem Regressiva</h1>
             <h3>Informações sobre a data para contagem regressiva: </h3>
             <form id="formData" action="" autocomplete="off">
-                <input descricaoData class="input" id="descricao" type="text" minlength="3" maxlength="50" placeholder="Descrição da data, ex.: Ano novo!" required><br>
+                <input descricaoData class="input" id="descricao" type="text" minlength="3" maxlength="40"
+                    placeholder="Descrição da data, ex.: Ano novo!" required><br>
                 <input dataAlvo class="input" id="dataUsuario" type="date" value="2023-01-01" required>
                 <button realizarContagem id="realizarContagem" class="botoes">Realizar Contagem</button>
                 <div class="alerta">

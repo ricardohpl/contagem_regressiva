@@ -214,6 +214,7 @@ body {
 
 #anoNovo {
     display: none;
+    
 }
 
 /* Alerta */
@@ -226,12 +227,27 @@ body {
     display: none;
     position: relative;
 }
+.alerta.bom {
+    background-color: greenyellow;
+    color: var(--main-text-color);
+    min-width: 300px;
+    text-align: center;
+    padding: 5px;
+}
+
+.alerta.bom .fecharAlerta {
+    color: var(--main-text-color);
+}
+
+.alerta.bom .fecharAlerta:hover {
+    color: var(--third-text-color);
+}
+
 
 .fecharAlerta {
     position: absolute;
     top: 0px;
     right: 10px;
-    /* margin-left: 15px; */
     color: var(--second-text-color);
     font-weight: bold;
     font-size: 1.6em;
@@ -242,6 +258,10 @@ body {
 
 .fecharAlerta:hover {
     color: var(--main-text-color);
+}
+
+.alerta #msg {
+    padding: 0 25px;
 }
 
 /* Responsivo */
