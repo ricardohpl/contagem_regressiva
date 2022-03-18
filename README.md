@@ -11,3 +11,4 @@ https://contagemregressiva321.netlify.app/
 4. Data minima será sempre o dia seguinte ao dia corrente;
 5. Após usuário selecionar uma data, exibe botão para resetar a contagem para o Ano Novo;
 6. Tela responsiva;
+7. Exibe mensagem ao chegar na data selecionada!
