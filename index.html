@@ -39,8 +39,8 @@
                 <div class="escrito">Segundos</div>
             </div>
         </div>
-        <div class="alerta">
-            <span id="msg"></span>
+        <div class="alertaFim">
+            <span id="msgFim">a</span>
             <span class="fecharAlerta" onclick="this.parentElement.style.display='none';">&times;</span>
         </div>
         <section>
@@ -60,11 +60,11 @@
                     placeholder="Descrição da data, ex.: Ano novo!" required><br>
                 <input dataAlvo class="input" id="dataUsuario" type="date" value="2023-01-01" required>
                 <button realizarContagem id="realizarContagem" class="botoes">Realizar Contagem</button>
-                <div class="alerta">
-                    <span class="fecharAlerta" onclick="this.parentElement.style.display='none';">&times;</span>
-                    Opa! <span id="msg"></span>
-                </div>
             </form>
+            <div class="alerta">
+                <span class="fecharAlerta" onclick="this.parentElement.style.display='none';">&times;</span>
+                Opa! <span id="msg"></span>
+            </div>
         </div>
     </div>
 </body>

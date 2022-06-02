@@ -7,7 +7,11 @@ const dataUsuario = document.querySelector('[dataAlvo]') // buscando elemento da
 const realizarContagem = document.querySelector('[realizarContagem]') // buscando botão para realizar contagem
 const anoNovo = document.getElementById('anoNovo') // botão para resetar a contagem para o ano novo
 const msg = document.getElementById('msg') // elemento para exibir mensagens na modal
+const msgFim = document.getElementById('msgFim') // elemento para exibir mensagens ao chegar na data fim
 const alerta = document.querySelector('.alerta') // classe para alertas para usuário
+const alertaFim = document.querySelector('.alertaFim') // classe para alertas para usuário ao chegar na data fim
+const fecharAlerta = document.querySelector('.fecharAlerta') // buscando elemento main
+
 
 function fecharModal() {
     modal.style.display = 'none'
@@ -66,8 +70,7 @@ function contarDatas() {
     
 
     if ((dias + horas + minutos + segundos) === 0) {
-        alerta.classList.add('bom')
-        mensagemAlerta(descricaoData.value ? 'A data: "' + descricaoData.value + '" chegou!!!' : 'Feliz Ano Novoooo !!!')
+        mensagemFim(descricaoData.value ? 'A data: "' + descricaoData.value + '" chegou!!!' : 'Feliz Ano Novoooo !!!')
     }
 }
 
@@ -91,7 +94,18 @@ function definirDatas() {
 
 function mensagemAlerta(textoMensagem) {
     msg.innerHTML = textoMensagem
-    alerta.style.display = 'block'
+    alerta.style.display = 'inline-block'
+}
+
+function mensagemFim(textoMensagem) {
+    msgFim.innerHTML = textoMensagem
+    alertaFim.style.display = 'block'
+}
+
+function fecharModal() {
+    modal.style.display = 'none'
+    contador.style.display = 'flex'
+    alerta.style.display = 'none'
 }
 
 definirDatas() // setando data minima igual a data atual e ano novo a partir do ano corrente
@@ -108,6 +122,7 @@ realizarContagem.addEventListener('click', (e) => { // iniciar contagem ao clica
             contagemRegressiva(descricaoData.value, true)
         }
         else {
+            console.log('aq')
             mensagemAlerta('Preencha a descrição!')
         }
     } else mensagemAlerta('Data tem que ser maior que hoje!')
